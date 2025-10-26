@@ -27,7 +27,8 @@ public class Bank {
         Scanner sc1 = new Scanner(System.in);
 
         System.out.println("New Account Number");
-        int num = Integer.parseInt(sc1.nextLine());
+
+        int num =  Integer.parseInt(sc1.nextLine());
 
         System.out.println("Enter your Name");
         String nam = sc1.nextLine();
