@@ -5,12 +5,12 @@ public class Bank {
 
       ArrayList<Account> Accounts = new ArrayList<>();
 
-      public static Account currentUser = null;
+      public  Account currentUser = null;
 
 
     Scanner sc1 = new Scanner(System.in);
 
-    int currentMoney = 0;
+
 
 
     public void GetAccountsDetail() {
@@ -78,14 +78,17 @@ public class Bank {
         return  false;
     }
 
-    public void DepositMoney(int amount) {
-        currentMoney = amount;
+    public void DepositMoney(Account user,int amount) {
+       user.balance += amount;
+        System.out.println("✅ Money Deposited Successfully " + amount);
     }
 
-    public void WithdrawMoney(int amount) {
-        if (currentMoney >= amount) {
-            currentMoney -= amount;
+    public void WithdrawMoney(Account user,int amount) {
+        if (user.balance >= amount) {
+            user.balance -= amount;
             System.out.println("✅ Money Withdrawed Successfully " + amount);
-        }
+        }else{
+            System.out.println("❌ You do not have enough funds to withdraw");
+    }
     }
 }
