@@ -3,10 +3,16 @@ import java.util.Scanner;
 public class Menu {
 
     public static boolean isAuth = false;
-    Bank bank = new Bank();
+    private Bank bank;
 
+    Scanner sc1 = new Scanner(System.in);
 
-    public  boolean StartingMenu()
+    public Menu(Bank bank)
+    {
+        this.bank = bank;
+    }
+
+    public  void StartingMenu()
     {
 
         while(!isAuth)
@@ -18,7 +24,7 @@ public class Menu {
             System.out.println("Press 1 to Create Account ");
             System.out.println("Press 2 to Login in ");
 
-            Scanner sc1 = new Scanner(System.in);
+
             int result1 = Integer.parseInt(sc1.nextLine());
 
 
@@ -28,16 +34,10 @@ public class Menu {
 
                 boolean res = bank.CreateAccont();
 
-                if(res)
+                if(!res)
                 {
-
-//                    Menu.isAuth = true;
-//                    return true;
-                }else{
                     System.out.println("Failed to Create an account");
-//                    return false;
                 }
-
 
             }else if(result1 == 2)
             {
@@ -47,8 +47,32 @@ public class Menu {
             }
         }
 
-        return false;
-
     }
 
+
+    public void MainMenu()
+    {
+        if(Bank.currentUser != null)
+        {
+            System.out.println("====================");
+            System.out.println("Welcome " + bank.currentUser.ownerName + " into Java Bank ");
+            System.out.println("====================");
+
+            System.out.println("************************");
+            System.out.println("You Current Money is : " + bank.currentUser.balance);
+            System.out.println("************************");
+
+            System.out.println("Press 1 to Desposit Money");
+            System.out.println("Press 2 to Withdraw Money");
+            System.out.println("Press 3 to Change Pin");
+            System.out.println("Press 4 to Delete Account");
+
+            System.out.println("***********************");
+            int result = Integer.parseInt(sc1.nextLine());
+
+
+        }else{
+            System.out.println("Current User Not Found");
+        }
+    }
 }

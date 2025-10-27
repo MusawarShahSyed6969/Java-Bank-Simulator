@@ -7,10 +7,16 @@ public class Main {
     public static void main(String[] args) {
     Scanner sc1 = new Scanner(System.in);
 
-    Menu menu = new Menu();
+    Bank bank = new Bank();
+    Menu menu = new Menu(bank);
 
 
-    boolean res1 = menu.StartingMenu();
+    menu.StartingMenu();
+
+    if(Menu.isAuth)
+    {
+        menu.MainMenu();
+    }
 
 
 

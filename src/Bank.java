@@ -5,16 +5,14 @@ public class Bank {
 
       ArrayList<Account> Accounts = new ArrayList<>();
 
-    Account currentUser = null;
-//    ArrayList<Integer> AccountNumber = new ArrayList<>();
-//    ArrayList<String> OwnerNames = new ArrayList<>();
+      public static Account currentUser = null;
+
 
     Scanner sc1 = new Scanner(System.in);
 
     int currentMoney = 0;
 
 
-    int arrayIndex;
     public void GetAccountsDetail() {
         // Fix: loop condition should be i < size()
         for (Account acc : Accounts) {
