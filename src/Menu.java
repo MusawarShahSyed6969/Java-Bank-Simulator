@@ -3,10 +3,12 @@ import java.util.Scanner;
 public class Menu {
 
     public static boolean isAuth = false;
+    Bank bank = new Bank();
 
 
-    public static boolean StartingMenu()
+    public  boolean StartingMenu()
     {
+
         while(!isAuth)
         {
             System.out.println("====================");
@@ -24,22 +26,22 @@ public class Menu {
             {
 
 
-                boolean res = Bank.CreateAccont();
+                boolean res = bank.CreateAccont();
 
                 if(res)
                 {
-                    System.out.println("Account Created Sucessfully");
-                    Menu.isAuth = true;
-                    return true;
+
+//                    Menu.isAuth = true;
+//                    return true;
                 }else{
                     System.out.println("Failed to Create an account");
-                    return false;
+//                    return false;
                 }
 
 
             }else if(result1 == 2)
             {
-
+                bank.LoginAccount();
             }else{
                 System.out.println("Pleace pick Between 1 to 2");
             }
