@@ -133,4 +133,10 @@ public class Bank {
         }
     }
 
+    void Logout(Account user)
+    {
+        Menu.isAuth = false;
+        System.out.println("✅ Account logout sucesfully");
+    }
+
 }
