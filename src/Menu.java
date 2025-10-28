@@ -41,7 +41,7 @@ public class Menu {
 
             }else if(result1 == 2)
             {
-                bank.LoginAccount();
+                bank.LoginAccount(this);
             }else{
                 System.out.println("Pleace pick Between 1 to 2");
             }
@@ -93,7 +93,29 @@ public class Menu {
                     break;
 
                 case 3:
-                    System.out.println("You chose 3");
+                    System.out.println("Enter old pin");
+                    int oldpinres = Integer.parseInt(sc1.nextLine());
+
+                    System.out.println("Enter new pin");
+                    int newpinres = Integer.parseInt(sc1.nextLine());
+                    bank.ChangePin(bank.currentUser,oldpinres,newpinres);
+                    MainMenu();
+                    break;
+
+                case 4:
+
+                    System.out.println("Press 1 if you want to delete an Account?");
+                    System.out.println("Press 2 to go back");
+                    int delres = Integer.parseInt(sc1.nextLine());
+
+                    if(delres == 1)
+                    {
+                        bank.DeleteAccount(bank.currentUser);
+                        isAuth = false;
+                        StartingMenu();
+                    }else{
+                        MainMenu();
+                    }
                     break;
                 default:
                     System.out.println("Invalid choice");

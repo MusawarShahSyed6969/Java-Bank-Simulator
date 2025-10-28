@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Bank {
@@ -51,7 +52,7 @@ public class Bank {
         }
     }
 
-    public boolean LoginAccount ()
+    public boolean LoginAccount (Menu menu)
     {
         System.out.println("New Account Number");
         int num = Integer.parseInt(sc1.nextLine());
@@ -69,6 +70,7 @@ public class Bank {
                     System.out.println("Welcome " + currentUser.ownerName);
                     System.out.println("✅Login Sucesfull");
                     Menu.isAuth = true;
+                    menu.MainMenu();
                     return true;
                 }
             }
@@ -91,4 +93,44 @@ public class Bank {
             System.out.println("❌ You do not have enough funds to withdraw");
     }
     }
+
+
+    public void ChangePin(Account user,int oldPin, int newPin)
+    {
+        if(user != null && user.pin == oldPin)
+        {
+            user.pin = newPin;
+            System.out.println("✅ Pin Changed Successfully " + user.ownerName);
+        }else{
+            System.out.println("❌ Failed to change pincode");
+        }
+    }
+
+    public void DeleteAccount(Account user) {
+        if (user == null) {
+            System.out.println("⚠️ Cannot delete: user is null");
+            return;
+        }
+
+        boolean deleted = false;
+
+        // Go through all accounts safely
+        Iterator<Account> iterator = Accounts.iterator();
+        while (iterator.hasNext()) {
+            Account acc = iterator.next();
+
+            // Check if this is the account we want to delete
+            if (user.accountNumber == acc.accountNumber) {
+                iterator.remove(); // ✅ safe way to remove
+                System.out.println("✅ Account Deleted Successfully: " + user.ownerName);
+                deleted = true;
+                break; // stop, no need to keep checking
+            }
+        }
+
+        if (!deleted) {
+            System.out.println("❌ Account not found, cannot delete");
+        }
+    }
+
 }
